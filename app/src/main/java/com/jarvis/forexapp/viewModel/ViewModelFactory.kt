@@ -5,6 +5,7 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.jarvis.forexapp.module.home.market.ForexMarketViewModel
 import com.jarvis.forexapp.module.main.MainViewModel
 
 class ViewModelFactory(owner: SavedStateRegistryOwner, defaultArgs: Bundle? = Bundle()) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
@@ -13,6 +14,7 @@ class ViewModelFactory(owner: SavedStateRegistryOwner, defaultArgs: Bundle? = Bu
 
             when {
                 isAssignableFrom(MainViewModel::class.java) -> ViewModelBuilder.buildMainViewModel()
+                isAssignableFrom(ForexMarketViewModel::class.java) -> ViewModelBuilder.buildForexMarketViewModel()
 
                 else ->
                     throw IllegalArgumentException(
