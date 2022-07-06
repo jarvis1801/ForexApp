@@ -2,11 +2,10 @@ package com.jarvis.forexapp.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.jarvis.forexapp.ViewModelFactory
+import com.jarvis.forexapp.viewModel.ViewModelFactory
 
 abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity() {
     protected var mViewBinding: VB? = null
