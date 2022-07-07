@@ -9,14 +9,16 @@ import com.jarvis.forexapp.databinding.PanelBalanceBinding
 class BalancePanel @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     CardView(context, attrs, defStyleAttr) {
 
-    private lateinit var binding: PanelBalanceBinding
+    private val binding: PanelBalanceBinding by lazy {
+        PanelBalanceBinding.inflate(LayoutInflater.from(context), this, true)
+    }
 
     init {
         init()
     }
 
     private fun init() {
-        binding = PanelBalanceBinding.inflate(LayoutInflater.from(context), this, true)
+        binding
     }
 
     fun updateData() {
