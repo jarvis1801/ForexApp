@@ -8,6 +8,7 @@ import androidx.savedstate.SavedStateRegistryOwner
 import com.jarvis.forexapp.module.home.market.ForexMarketViewModel
 import com.jarvis.forexapp.module.main.MainViewModel
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(owner: SavedStateRegistryOwner, defaultArgs: Bundle? = Bundle()) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
     override fun <T : ViewModel> create(key: String, modelClass: Class<T>, handle: SavedStateHandle): T {
         return with(modelClass) {

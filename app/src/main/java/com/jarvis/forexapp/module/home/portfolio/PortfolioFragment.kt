@@ -1,4 +1,6 @@
 package com.jarvis.forexapp.module.home.portfolio
 
-class PortfolioFragment {
+import androidx.fragment.app.Fragment
+
+class PortfolioFragment : Fragment() {
 }

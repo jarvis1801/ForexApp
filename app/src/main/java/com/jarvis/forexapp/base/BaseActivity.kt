@@ -8,9 +8,9 @@ import androidx.viewbinding.ViewBinding
 import com.jarvis.forexapp.viewModel.ViewModelFactory
 
 abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity() {
-    protected var mViewBinding: VB? = null
-        private set
-
+    protected val mViewBinding: VB by lazy {
+        bindingInflater.invoke(layoutInflater)
+    }
     abstract val bindingInflater: (LayoutInflater) -> VB
 
     var mViewModel: VM? = null
@@ -25,11 +25,12 @@ abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatAct
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setContentView(mViewBinding.root)
+
         val viewModelFactory = ViewModelFactory(this, intent.extras)
         mViewModel = ViewModelProvider(this, viewModelFactory)[getViewModelClass()]
         subscribeViewModel()
 
-        mViewBinding = bindingInflater.invoke(layoutInflater)
         initView()
         initListener()
         initStartEvent()

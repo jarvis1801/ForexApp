@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewbinding.ViewBinding
+import com.jarvis.forexapp.module.main.MainActivity
 import com.jarvis.forexapp.module.main.MainViewModel
 import com.jarvis.forexapp.util.ViewExtension.hideStatusBar
 import com.jarvis.forexapp.util.ViewExtension.showStatusBar
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     protected lateinit var mViewBinding: VB
+        private set
     abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
 
     private val mMainActivityViewModel: MainViewModel by activityViewModels()
@@ -20,17 +22,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     open var isFullScreen = false
 
     open fun subscribeViewModel() {
-//        mMainActivityViewModel?.requestLoading?.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                showLoading()
-//            }
-//        }
-//
-//        mMainActivityViewModel?.reduceLoading?.observe(viewLifecycleOwner) {
-//            if (it == true) {
-//                hideLoading()
-//            }
-//        }
     }
 
     open fun getArgs(): Bundle { return Bundle() }
@@ -55,15 +46,19 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     abstract fun initListener()
     abstract fun initStartEvent()
 
-//    private fun showLoading() {
-//        val mainActivity = requireActivity() as MainActivity
-//        mainActivity.showLoading()
-//    }
-//
-//    private fun hideLoading() {
-//        val mainActivity = requireActivity() as MainActivity
-//        mainActivity.hideLoading()
-//    }
+    private fun addApiRequestCount() {
+        if (requireActivity() is MainActivity) {
+            val mainActivity = requireActivity() as MainActivity
+            mainActivity.addApiRequestCount()
+        }
+    }
+
+    private fun reduceApiRequestCount() {
+        if (requireActivity() is MainActivity) {
+            val mainActivity = requireActivity() as MainActivity
+            mainActivity.reduceApiRequestCount()
+        }
+    }
 
     override fun onDestroy() {
         if (isFullScreen) showStatusBar()
