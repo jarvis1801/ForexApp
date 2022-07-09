@@ -15,4 +15,20 @@
         android:icon="@drawable/ic_baseline_supervised_user_circle_48"
         android:title="@string/title_portfolio"
         />
+
+    <item
+        android:id="@+id/navigation_bar_portfolio2"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_supervised_user_circle_48"
+        android:title="@string/title_portfolio"
+        />
+
+    <item
+        android:id="@+id/navigation_bar_portfolio3"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_supervised_user_circle_48"
+        android:title="@string/title_portfolio"
+        />
 </menu>

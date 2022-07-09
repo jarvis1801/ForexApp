@@ -14,10 +14,8 @@ class LoadingFrame @JvmOverloads constructor(context: Context, attrs: AttributeS
     }
 
     private var isLoading = false
-//    private var requestingCount = 0
 
     fun showLoading() {
-//        requestingCount++
         if (!isLoading) {
             isLoading = true
             visibility = VISIBLE

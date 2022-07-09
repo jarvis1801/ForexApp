@@ -13,7 +13,7 @@ abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatAct
     }
     abstract val bindingInflater: (LayoutInflater) -> VB
 
-    var mViewModel: VM? = null
+    protected var mViewModel: VM? = null
 
     protected abstract fun getViewModelClass(): Class<VM>
 

@@ -9,6 +9,7 @@ import com.jarvis.forexapp.R
 import com.jarvis.forexapp.base.BaseFragment
 import com.jarvis.forexapp.databinding.FragmentHomeBinding
 
+
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
         get() = FragmentHomeBinding::inflate
@@ -35,6 +36,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 val menuItemIndex = when (it.itemId) {
                     R.id.navigation_bar_market -> 0
                     R.id.navigation_bar_portfolio -> 1
+                    R.id.navigation_bar_portfolio2 -> 2
+                    R.id.navigation_bar_portfolio3 -> 3
                     else -> null
                 }
                 menuItemIndex?.let {

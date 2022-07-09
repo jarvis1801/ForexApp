@@ -16,18 +16,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun getViewModelClass(): Class<MainViewModel> = MainViewModel::class.java
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun subscribeViewModel() {
-        mViewModel?.apiRequestNotFinishCount?.observe(this) {
-            if (it > 0) {
-                showLoading()
-            } else {
-                hideLoading()
-            }
-        }
     }
 
     override fun initView() {
@@ -47,22 +36,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initStartEvent() {
 
-    }
-
-    private fun showLoading() {
-        mViewBinding.loadingFrame.showLoading()
-    }
-
-    fun hideLoading() {
-        mViewBinding.loadingFrame.hideLoading()
-    }
-
-    fun addApiRequestCount() {
-        mViewModel?.addApiRequestCount()
-    }
-
-    fun reduceApiRequestCount() {
-        mViewModel?.reduceApiRequestCount()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

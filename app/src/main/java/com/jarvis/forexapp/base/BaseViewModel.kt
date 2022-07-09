@@ -3,22 +3,18 @@ package com.jarvis.forexapp.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.jarvis.forexapp.model.Resource
+import com.jarvis.forexapp.model.Status
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val _apiRequestStarted = MutableLiveData(false)
-    val apiRequestStarted = _apiRequestStarted as LiveData<Boolean>
+    private val _errorMessage = MutableLiveData("")
+    val errorMessage = _errorMessage as LiveData<String>
 
-    private val _apiRequestFinished = MutableLiveData(false)
-    val apiRequestFinished = _apiRequestFinished as LiveData<Boolean>
-
-    fun onApiRequestStarted() {
-        _apiRequestStarted.postValue(true)
-        _apiRequestStarted.postValue(false)
-    }
-
-    fun onApiRequestFinished() {
-        _apiRequestFinished.postValue(true)
-        _apiRequestFinished.postValue(false)
+    fun <T> Resource<T>.genericHandleNetworkRequest(): T? {
+        return if (status == Status.SUCCESS) data else {
+            _errorMessage.postValue(message)
+            null
+        }
     }
 }

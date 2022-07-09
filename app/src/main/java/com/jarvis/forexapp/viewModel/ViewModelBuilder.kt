@@ -8,8 +8,7 @@ import com.jarvis.forexapp.module.main.MainViewModel
 object ViewModelBuilder {
 
     fun buildMainViewModel(): MainViewModel {
-        val viewModel = MainViewModel()
-        return viewModel
+        return MainViewModel()
     }
 
     fun buildForexMarketViewModel(): ForexMarketViewModel {

@@ -10,6 +10,8 @@ import com.jarvis.forexapp.module.home.portfolio.PortfolioFragment
 class HomeSectionAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {
     private var fragmentList: ArrayList<Fragment> = arrayListOf(
         ForexMarketFragment(),
+        PortfolioFragment(),
+        PortfolioFragment(),
         PortfolioFragment()
     )
 

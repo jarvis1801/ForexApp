@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    const val TIME_OUT = 10L
+    private const val TIME_OUT = 10L
 
     private val forexApiUrl = App.instance.resources.getString(R.string.FOREX_BASE_URL)
 

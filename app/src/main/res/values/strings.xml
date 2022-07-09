@@ -5,4 +5,12 @@
     <string name="title_portfolio">Portfolio</string>
     <string name="search_title">Search</string>
     <string name="search_hint">Search</string>
+    <string name="panel_balance_equity">Equity</string>
+    <string name="panel_balnce_balance">Balance</string>
+    <string name="panel_balance_used">Used</string>
+    <string name="panel_balance_margin">Margin</string>
+    <string name="general_symbol">Symbol</string>
+    <string name="general_change">Change</string>
+    <string name="general_sell">Sell</string>
+    <string name="general_buy">Buy</string>
 </resources>

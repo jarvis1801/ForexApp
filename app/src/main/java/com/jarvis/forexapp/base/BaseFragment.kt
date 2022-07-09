@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewbinding.ViewBinding
-import com.jarvis.forexapp.module.main.MainActivity
 import com.jarvis.forexapp.module.main.MainViewModel
 import com.jarvis.forexapp.util.ViewExtension.hideStatusBar
 import com.jarvis.forexapp.util.ViewExtension.showStatusBar
@@ -22,6 +22,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     open var isFullScreen = false
 
     open fun subscribeViewModel() {
+
     }
 
     open fun getArgs(): Bundle { return Bundle() }
@@ -46,22 +47,16 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     abstract fun initListener()
     abstract fun initStartEvent()
 
-    private fun addApiRequestCount() {
-        if (requireActivity() is MainActivity) {
-            val mainActivity = requireActivity() as MainActivity
-            mainActivity.addApiRequestCount()
-        }
-    }
-
-    private fun reduceApiRequestCount() {
-        if (requireActivity() is MainActivity) {
-            val mainActivity = requireActivity() as MainActivity
-            mainActivity.reduceApiRequestCount()
-        }
-    }
-
     override fun onDestroy() {
         if (isFullScreen) showStatusBar()
         super.onDestroy()
+    }
+
+    fun BaseViewModel.observerErrorMessage() {
+        errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            if (!errorMessage.isNullOrBlank()) {
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

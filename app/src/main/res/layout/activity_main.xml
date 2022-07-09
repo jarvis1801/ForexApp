@@ -19,9 +19,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="@style/Theme.ForexApp" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,12 +36,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
-
-
-    <com.jarvis.forexapp.module.main.LoadingFrame
-        android:id="@+id/loadingFrame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

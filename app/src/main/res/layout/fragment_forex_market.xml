@@ -6,11 +6,13 @@
     android:orientation="vertical">
 
     <com.jarvis.forexapp.module.home.market.BalancePanel
+        android:id="@+id/balancePanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
     <com.jarvis.forexapp.module.home.market.ForexRatePanel
+        android:id="@+id/ratePanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
