@@ -1,6 +1,10 @@
 package com.jarvis.forexapp.util
 
+import android.content.Context
+import androidx.core.content.res.ResourcesCompat
+import com.jarvis.forexapp.R
 import com.jarvis.forexapp.model.forex.Rate
+import com.jarvis.forexapp.util.ForexUtil.toMoneyFormat
 import java.text.DecimalFormat
 import java.util.concurrent.ThreadLocalRandom
 
@@ -17,7 +21,7 @@ object ForexUtil {
     }
 
     fun Float.formatTo2Decimal(): String {
-        val format = DecimalFormat("#.##")
+        val format = DecimalFormat("0.0#")
         return format.format(this)
     }
 
@@ -34,5 +38,20 @@ object ForexUtil {
         return sumOf {
             (10000 * (1f + (it.changeRate ?: 1f))).toDouble()
         }.toFloat()
+    }
+
+    fun getRateChangeColorRes(value: Float?): Int {
+        return if (value == null) {
+            R.color.white
+        } else if (value >= 0) {
+            R.color.positive_change
+        } else {
+            R.color.negative_change
+        }
+    }
+
+    fun Float.toPercentFormat(): String {
+        val value = this.formatTo2Decimal()
+        return "$value%"
     }
 }

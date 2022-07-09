@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#111B29</color>
+
+    <color name="positive_change">#00DB12</color>
+    <color name="negative_change">#D92F21</color>
 </resources>

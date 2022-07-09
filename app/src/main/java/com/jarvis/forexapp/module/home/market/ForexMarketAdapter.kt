@@ -3,11 +3,14 @@ package com.jarvis.forexapp.module.home.market
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import com.jarvis.forexapp.base.BaseRecyclerViewAdapter
 import com.jarvis.forexapp.base.BaseViewHolder
 import com.jarvis.forexapp.databinding.ItemCurrencyRateBinding
 import com.jarvis.forexapp.model.forex.Rate
 import com.jarvis.forexapp.util.ForexUtil.formatTo2Decimal
+import com.jarvis.forexapp.util.ForexUtil.getRateChangeColorRes
+import com.jarvis.forexapp.util.ForexUtil.toPercentFormat
 
 class ForexMarketAdapter(context: Context) : BaseRecyclerViewAdapter<ForexMarketAdapter.ViewHolder>(context) {
 
@@ -27,8 +30,11 @@ class ForexMarketAdapter(context: Context) : BaseRecyclerViewAdapter<ForexMarket
             currentItem.apply {
                 binding.tvRateName.text = pairName
 
-                // TODO change color /percentage /decimal
-                binding.tvChangePercentage.text = changeRate.toString()
+                binding.tvChangePercentage.apply {
+                    val color = ResourcesCompat.getColor(resources, getRateChangeColorRes(changeRate), null)
+                    setTextColor(color)
+                    text = changeRate?.toPercentFormat()
+                }
 
                 binding.tvSell.text = sell?.formatTo2Decimal()
 
