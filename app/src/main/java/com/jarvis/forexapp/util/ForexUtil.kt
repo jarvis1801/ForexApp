@@ -1,10 +1,7 @@
 package com.jarvis.forexapp.util
 
-import android.content.Context
-import androidx.core.content.res.ResourcesCompat
 import com.jarvis.forexapp.R
 import com.jarvis.forexapp.model.forex.Rate
-import com.jarvis.forexapp.util.ForexUtil.toMoneyFormat
 import java.text.DecimalFormat
 import java.util.concurrent.ThreadLocalRandom
 
@@ -35,9 +32,10 @@ object ForexUtil {
     }
 
     fun List<Rate>.calculateEquity(): Float {
-        return sumOf {
-            (10000 * (1f + (it.changeRate ?: 1f))).toDouble()
-        }.toFloat()
+        val percent = sumOf {
+            it.changeRate?.toDouble() ?: 0.0
+        }.toFloat() / 100
+        return (1 + percent).times(size * 10000)
     }
 
     fun getRateChangeColorRes(value: Float?): Int {

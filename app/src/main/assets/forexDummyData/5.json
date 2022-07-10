@@ -1,0 +1,25 @@
+{
+    "rates": {
+        "USDAED": {
+            "rate": 3.2343545,
+            "timestamp": 1657343016
+        },
+        "USDAFN": {
+            "rate": 87.655,
+            "timestamp": 1657343016
+        },
+        "USDALL": {
+            "rate": 116.03901,
+            "timestamp": 1657343016
+        },
+        "USDAMD": {
+            "rate": 405.874145,
+            "timestamp": 1657343016
+        },
+        "USDANG": {
+            "rate": 1.795421,
+            "timestamp": 1657343016
+        }
+    },
+    "code": 200
+}

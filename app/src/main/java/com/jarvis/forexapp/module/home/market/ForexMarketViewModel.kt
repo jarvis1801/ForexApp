@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class ForexMarketViewModel(
-    private val forexMarketRepository: ForexMarketRepository
+    private val forexMarketRepository: BaseForexMarketRepository
 ) : BaseViewModel() {
 
     private var currencyPair: List<String>? = null

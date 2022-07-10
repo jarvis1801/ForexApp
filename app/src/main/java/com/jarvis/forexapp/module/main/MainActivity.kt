@@ -2,7 +2,6 @@ package com.jarvis.forexapp.module.main
 
 import android.app.SearchManager
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import androidx.appcompat.widget.SearchView
