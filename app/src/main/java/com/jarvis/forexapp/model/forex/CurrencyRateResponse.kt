@@ -11,14 +11,14 @@ data class CurrencyRateResponse(
 )
 
 data class Rate(
-    var rate: Float? = null,
+    var rate: Double? = null,
     val timestamp: Int? = null,
 
     @Transient var pairName: String? = null,
-    @Transient val initRate: Float? = null,
-    @Transient var changeRate: Float? = calculateChangePercent(rate ?: 0f, initRate ?: rate ?: 0f),
-    @Transient var sell: Float? = null,
-    @Transient var buy: Float? = null
+    @Transient val initRate: Double? = null,
+    @Transient var changeRate: Double? = calculateChangePercent(rate ?: 0.0, initRate ?: rate ?: 0.0),
+    @Transient var sell: Double? = null,
+    @Transient var buy: Double? = null
 ) {
 
     init {

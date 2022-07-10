@@ -25,12 +25,12 @@ class BalancePanel @JvmOverloads constructor(context: Context, attrs: AttributeS
     }
 
     fun updateData(rateList: List<Rate>) {
-        binding.tvEquityValue.text = rateList.calculateEquity().toMoneyFormat()
+        binding.tvEquityValue.text = rateList.map { it.changeRate ?: 0.0 }.calculateEquity().toMoneyFormat()
 
-        binding.tvBalanceValue.text = (rateList.size * 10000).toFloat().toMoneyFormat()
+        binding.tvBalanceValue.text = (rateList.size * 10000).toDouble().toMoneyFormat()
 
-        binding.tvMarginValue.text = 12345f.toMoneyFormat()
+        binding.tvMarginValue.text = 12345.toDouble().toMoneyFormat()
 
-        binding.tvUsedValue.text = 12345f.toMoneyFormat()
+        binding.tvUsedValue.text = 12345.toDouble().toMoneyFormat()
     }
 }

@@ -1,44 +1,40 @@
 package com.jarvis.forexapp.util
 
 import com.jarvis.forexapp.R
-import com.jarvis.forexapp.model.forex.Rate
 import java.text.DecimalFormat
 import java.util.concurrent.ThreadLocalRandom
 
 object ForexUtil {
 
-    fun Float.add1To10Percent(): Float {
-        val percent = ThreadLocalRandom.current().nextInt(1, 10).toFloat() / 100.toFloat()
-        return this * (1.toFloat() + percent)
+    fun Double.add1To10Percent(): Double {
+        val percent = ThreadLocalRandom.current().nextInt(1, 10).toDouble() / 100.toDouble()
+        return this * (1.toDouble() + percent)
     }
 
-    fun Float.reduce1To10Percent(): Float {
-        val percent = ThreadLocalRandom.current().nextInt(1, 10).toFloat() / 100.toFloat()
-        return this * (1.toFloat() - percent)
+    fun Double.reduce1To10Percent(): Double {
+        val percent = ThreadLocalRandom.current().nextInt(1, 10).toDouble() / 100.toDouble()
+        return this * (1.toDouble() - percent)
     }
 
-    fun Float.formatTo2Decimal(): String {
+    fun Double.formatTo2Decimal(): String {
         val format = DecimalFormat("0.0#")
         return format.format(this)
     }
 
-    fun calculateChangePercent(newValue: Float, oldValue: Float): Float {
+    fun calculateChangePercent(newValue: Double, oldValue: Double): Double {
         return newValue.minus(oldValue).div(oldValue).times(100f)
     }
 
-    fun Float.toMoneyFormat(): String {
+    fun Double.toMoneyFormat(): String {
         val value = String.format("%.2f", this)
         return "$$value"
     }
 
-    fun List<Rate>.calculateEquity(): Float {
-        val percent = sumOf {
-            it.changeRate?.toDouble() ?: 0.0
-        }.toFloat() / 100
-        return (1 + percent).times(size * 10000)
+    fun List<Double>.calculateEquity(): Double {
+        return sumOf { (1 + (it / 100)) * 10000 }
     }
 
-    fun getRateChangeColorRes(value: Float?): Int {
+    fun getRateChangeColorRes(value: Double?): Int {
         return if (value == null) {
             R.color.white
         } else if (value >= 0) {
@@ -48,8 +44,8 @@ object ForexUtil {
         }
     }
 
-    fun Float.toPercentFormat(): String {
-        val value = this.formatTo2Decimal()
+    fun Double.toPercentFormat(): String {
+        val value = this.plus(0.0).formatTo2Decimal()
         return "$value%"
     }
 }
