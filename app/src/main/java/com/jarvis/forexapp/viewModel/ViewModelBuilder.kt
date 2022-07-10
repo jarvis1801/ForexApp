@@ -11,7 +11,7 @@ object ViewModelBuilder {
 
     fun buildForexMarketViewModel(): ForexMarketViewModel {
 
-        val forexMarketRepository = ForexMarketRepository(ForexMarketRemoteDataSource())
+        val forexMarketRepository = ForexMarketDummyRepository(ForexMarketDummyDataSource())
 
         return ForexMarketViewModel(
             forexMarketRepository
